@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./fight.png" type="image/png">
+    <title>Not Fight Club</title>
+</head>
+<body>
+    <div id="app">
+        <section class="registration-screen" id="registration-screen">
+            <h1 class="registration-screen__title">Not Fight Club</h1>
+            <p class="registration-screen__subtitle">Enter character name</p>
+            <input type="text" id="player-name-input" placeholder="Your name...">
+            <button type="submit" id="register-button">Start game</button>
+        </section>
+
+        <section id="main-screen">
+            <nav class="main-nav">
+                <button class="nav-btn" data-screen="main">&#127968; Home</button>
+                <button class="nav-btn" data-screen="character">&#128100; Character</button>
+                <button class="nav-btn" data-screen="settings">&#9881;&#65039; Settings</button>
+            </nav>
+            <h2>Welcome, <span id="player-name-display"></span>!</h2>
+            <button id="start-fight-btn">Start</button>
+            <button id="reset-btn">Reset Progress</button>
+        </section>
+    </div>
+    <script type="module" src="./app.js"></script>
+</body>
+</html>

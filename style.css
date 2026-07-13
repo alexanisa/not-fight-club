@@ -1,0 +1,183 @@
+html {
+    font-size: 62.5%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #deffdb,#fff6e0,#ffe0e5,#ff9985,#b270a1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+#app {
+    text-align: center;
+    max-width: 50rem;
+    width: 100%;
+    background: rgba(255, 248, 240, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 4rem 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+.registration-screen__title {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #F8C26D;
+    text-shadow: 0 0 2rem rgba(248, 194, 109, 0.6), 0 0 4rem rgba(248, 194, 109, 0.3);
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.registration-screen__subtitle {
+    font-size: 2.2rem;
+    color: #5A4A5A;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+}
+
+#player-name-input {
+    width: 100%;
+    padding: 1.4rem 2rem;
+    font-size: 2.4rem;
+    border: 0.2rem solid #961D2C;
+    border-radius: 1.2rem;
+    background: #FFF8F0;
+    color: #4A0D14;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#player-name-input::placeholder {
+    color: #B09B9B;
+    font-weight: 300;
+    font-size: 1.8rem;
+}
+
+#player-name-input:focus {
+    border-color: #F8C26D;
+    box-shadow: 0 0 2rem rgba(248, 194, 109, 0.3);
+}
+
+#register-button {
+    margin-top: 2rem;
+    padding: 1.4rem 3.5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: #F8C26D;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 109, 0.4);
+    letter-spacing: 0.1rem;
+}
+
+#register-button:hover {
+    background: #961D2C;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2.5rem rgba(150, 29, 44, 0.4);
+}
+
+#register-button:active {
+    transform: scale(0.96);
+}
+
+#main-screen {
+    display: none;
+    text-align: center;
+}
+
+#main-screen h2 {
+    font-size: 3.6rem;
+    color: #4A0D14;
+    margin-bottom: 2rem;
+}
+
+#main-screen h2 span {
+    color: #F8C26D;
+    text-shadow: 0 0 1.5rem rgba(248, 194, 109, 0.4);
+}
+
+#start-fight-btn {
+    padding: 1.4rem 4rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: #F8C26D;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 109, 0.4);
+}
+
+#start-fight-btn:hover {
+    background: #961D2C;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2.5rem rgba(150, 29, 44, 0.4);
+}
+
+#start-fight-btn:active {
+    transform: scale(0.96);
+}
+
+#reset-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
+    background: transparent;
+    color: #961D2C;
+    border: 0.2rem solid #961D2C;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#reset-btn:hover {
+    background: #961D2C;
+    color: white;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.2rem solid rgba(150, 29, 44, 0.2);
+}
+
+.nav-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.6rem;
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid transparent;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-btn:hover {
+    background: rgba(248, 194, 109, 0.2);
+    border-color: #F8C26D;
+}
+
+.nav-btn.active {
+    background: #F8C26D;
+    color: white;
+    border-color: #F8C26D;
+}

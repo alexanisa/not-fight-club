@@ -6,9 +6,17 @@ const playerNameDisplay = document.getElementById('player-name-display');
 const startFightBtn = document.getElementById('start-fight-btn');
 const resetBtn = document.getElementById('reset-btn');
 
+const characterNameDisplay = document.getElementById('character-name-display');
+const playerAvatar = document.getElementById('player-avatar');
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+const avatarBtns = document.querySelectorAll('.avatar-btn');
+const backToMainBtn = document.getElementById('back-to-main-from-character');
+const navButtons = document.querySelectorAll('.nav-btn');
+const characterScreen = document.getElementById('character-screen');
+
 function showMainScreen() {
-    registrationScreen.style.display = 'none';
-    mainScreen.style.display = 'block';
+    showScreen('main-screen');
     playerNameDisplay.textContent = localStorage.getItem('playerName');
 }
 
@@ -41,3 +49,49 @@ resetBtn.addEventListener('click', () => {
         location.reload();
     }
 });
+
+function showScreen(screenId) {
+    document.querySelectorAll('#app > section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(screenId).style.display = 'block';
+}
+
+navButtons.forEach(btn => {
+    btn.addEventListener('click', ()=> {
+        let screen = btn.dataset.screen;
+        if (screen === 'main') {
+            showScreen('main-screen');
+        } else if (screen === 'character') {
+            showScreen('character-screen');
+            updateCharacterScreen();
+        } else if (screen === 'settings') {
+            showScreen('settings-screen');
+        }
+    });
+})
+
+function updateCharacterScreen() {
+    characterNameDisplay.textContent = localStorage.getItem('playerName') || 'Unknown';
+    winsDisplay.textContent = localStorage.getItem('playerWins') || 0;
+    lossesDisplay.textContent = localStorage.getItem('playerLosses') || 0;
+    let savedAvatar = localStorage.getItem('playerAvatar');
+    if (savedAvatar) {
+        playerAvatar.src = savedAvatar;
+    }
+}
+
+backToMainBtn.addEventListener('click', ()=> {
+    showScreen('main-screen');
+})
+
+avatarBtns.forEach(avatarBtn => {
+    avatarBtn.addEventListener('click', ()=> {
+        let avatarCh = avatarBtn.dataset.avatar;
+        playerAvatar.src = avatarCh;
+        localStorage.setItem('playerAvatar', avatarCh);
+
+        avatarBtns.forEach(btn => btn.classList.remove('active'));
+        avatarBtn.classList.add('active');
+    })
+})

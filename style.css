@@ -181,3 +181,84 @@ body {
     color: white;
     border-color: #F8C26D;
 }
+
+#character-screen {
+    display: none;
+    text-align: center;
+}
+
+#avatar-container {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.3rem solid #F8C26D;
+    box-shadow: 0 0 2rem rgba(248, 194, 109, 0.3);
+}
+
+#player-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#character-name-display {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+#character-screen p {
+    font-size: 1.6rem;
+    color: #5A4A5A;
+    margin-bottom: 1rem;
+}
+
+#avatar-selection {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.avatar-btn {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+    font-size: 1.4rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-btn:hover {
+    transform: scale(1.1);
+    border-color: #F8C26D;
+}
+
+.avatar-btn.active {
+    border-color: #961D2C;
+    box-shadow: 0 0 1.5rem rgba(150, 29, 44, 0.3);
+}
+
+#back-to-main-from-character {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid #4A0D14;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.6rem;
+}
+
+#back-to-main-from-character:hover {
+    background: #4A0D14;
+    color: white;
+}

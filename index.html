@@ -26,6 +26,27 @@
             <button id="start-fight-btn">Start</button>
             <button id="reset-btn">Reset Progress</button>
         </section>
+
+        <section id="character-screen">
+            <nav class="main-nav">
+                <button class="nav-btn" data-screen="main">&#127968; Home</button>
+                <button class="nav-btn active" data-screen="character">&#128100; Character</button>
+                <button class="nav-btn" data-screen="settings">&#9881;&#65039; Settings</button>
+            </nav>
+            <h2>Character</h2>
+            <div id="avatar-container">
+                <img id="player-avatar" src="#" alt="Avatar">
+            </div>
+            <p id="character-name-display"></p>
+            <p>Wins: <span id="wins-display">0</span> | Losses: <span id="losses-display">0</span></p>
+            <div id="avatar-selection">
+                <button class="avatar-btn" data-avatar="#">1</button>
+                <button class="avatar-btn" data-avatar="#">2</button>
+                <button class="avatar-btn" data-avatar="#">3</button>
+            </div>
+
+            <button id="back-to-main-from-character">&lArr; Back</button>
+        </section>
     </div>
     <script type="module" src="./app.js"></script>
 </body>

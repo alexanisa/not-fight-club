@@ -71,3 +71,50 @@ export function loadBattleState() {
     }
     return false;
 }
+
+let selectedAttack = null;
+let selectedDefense = [];
+
+const attackZones = document.querySelectorAll('.attack-zone');
+attackZones.forEach(zone => {
+    zone.addEventListener('click', ()=> {
+        attackZones.forEach(btn => btn.classList.remove('selected'));
+        zone.classList.add('selected');
+        selectedAttack = zone.dataset.zone;
+        checkFightReady();
+    });
+})
+
+const defenseZones = document.querySelectorAll('.defense-zone');
+defenseZones.forEach(zone => {
+    zone.addEventListener('click', ()=> {
+        zone.classList.toggle('selected');
+        const selected = document.querySelectorAll('.defense-zone.selected');
+
+        if (selected.length > 2) {
+            zone.classList.remove('selected');
+        }
+        selectedDefense = Array.from(document.querySelectorAll('.defense-zone.selected'))
+            .map(btn => btn.dataset.zone);
+            checkFightReady();
+    });
+})
+
+function checkFightReady() {
+    const hint = document.getElementById('battle-hint');
+    const fightBtn = document.getElementById('fight-btn');
+
+    if (!selectedAttack && selectedDefense.length < 2) {
+        hint.textContent = 'Choose 1 zone to attack and 2 zones to defend';
+        fightBtn.disabled = true;
+    } else if (!selectedAttack) {
+        hint.textContent = 'Choose 1 zone to attack';
+        fightBtn.disabled = true;
+    } else if (selectedDefense.length < 2) {
+        hint.textContent = 'Choose 2 zones to defend';
+        fightBtn.disabled = true;
+    } else {
+        hint.textContent = 'Ready to fight!';
+        fightBtn.disabled = false;
+    }
+}

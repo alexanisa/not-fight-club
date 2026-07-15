@@ -566,3 +566,9 @@ body {
     color: #961D2C;
     font-weight: 700;
 }
+
+#battle-hint {
+    color: #5A4A5A;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+}

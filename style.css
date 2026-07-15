@@ -191,7 +191,7 @@ body {
     width: 15rem;
     height: 15rem;
     margin: 0 auto 1.5rem;
-    border-radius: 50%;
+    border-radius: 25%;
     overflow: hidden;
     border: 0.3rem solid #F8C26D;
     box-shadow: 0 0 2rem rgba(248, 194, 109, 0.3);
@@ -261,4 +261,95 @@ body {
 #back-to-main-from-character:hover {
     background: #4A0D14;
     color: white;
+}
+
+#settings-screen {
+    text-align: center;
+}
+
+#settings-screen h2 {
+    font-size: 3.6rem;
+    color: #4A0D14;
+    margin-bottom: 2rem;
+}
+
+#settings-name-input {
+    width: 80%;
+    max-width: 30rem;
+    padding: 1.2rem 1.8rem;
+    font-size: 2rem;
+    border: 0.2rem solid #F8C26D;
+    border-radius: 0.8rem;
+    background: #FFF8F0;
+    color: #4A0D14;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+#settings-name-input:focus {
+    border-color: #961D2C;
+    box-shadow: 0 0 1.5rem rgba(248, 194, 109, 0.3);
+}
+
+#settings-screen button {
+    padding: 1rem 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+}
+
+#settings-screen .save-btn {
+    background: #F8C26D;
+    color: white;
+}
+
+#settings-screen .save-btn:hover {
+    background: #e0a84d;
+    transform: translateY(-0.2rem);
+}
+
+#settings-screen .back-btn {
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid #4A0D14;
+}
+
+#settings-screen .back-btn:hover {
+    background: #4A0D14;
+    color: white;
+}
+
+.settings-label {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+.settings-current-name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #961D2C;
+    background: rgba(248, 194, 109, 0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+#settings-current-name-display {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #961D2C;
+    background: rgba(248, 194, 109, 0.25);
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    display: inline-block;
+    margin: 0.5rem 0 1.5rem 0;
+    border: 0.2rem solid #F8C26D;
+    box-shadow: 0 0.2rem 1rem rgba(248, 194, 109, 0.3);
 }

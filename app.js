@@ -15,6 +15,11 @@ const backToMainBtn = document.getElementById('back-to-main-from-character');
 const navButtons = document.querySelectorAll('.nav-btn');
 const characterScreen = document.getElementById('character-screen');
 
+const nameSetting = document.getElementById('settings-name-input');
+const saveSettingsBtn = document.querySelector('.save-btn');
+const backFromSettingsBtn = document.querySelector('.back-btn');
+const settingsCurrentNameDisplay = document.getElementById('settings-current-name-display');
+
 function showMainScreen() {
     showScreen('main-screen');
     playerNameDisplay.textContent = localStorage.getItem('playerName');
@@ -67,6 +72,7 @@ navButtons.forEach(btn => {
             updateCharacterScreen();
         } else if (screen === 'settings') {
             showScreen('settings-screen');
+            updateSettingScreen();
         }
     });
 })
@@ -94,4 +100,20 @@ avatarBtns.forEach(avatarBtn => {
         avatarBtns.forEach(btn => btn.classList.remove('active'));
         avatarBtn.classList.add('active');
     })
+})
+
+function updateSettingScreen() {
+    settingsCurrentNameDisplay.textContent = localStorage.getItem('playerName');
+    nameSetting.value = localStorage.getItem('playerName');
+}
+
+saveSettingsBtn.addEventListener('click', ()=> {
+    let newName = nameSetting.value.trim();
+    if (newName) localStorage.setItem('playerName', newName);
+    updateSettingScreen();
+    playerNameDisplay.textContent = newName;
+})
+
+backFromSettingsBtn.addEventListener('click', ()=> {
+    showScreen('main-screen');
 })

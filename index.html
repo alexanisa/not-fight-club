@@ -35,17 +35,31 @@
             </nav>
             <h2>Character</h2>
             <div id="avatar-container">
-                <img id="player-avatar" src="#" alt="Avatar">
+                <img id="player-avatar" src="./avatars/avatar1.png" alt="Avatar">
             </div>
             <p id="character-name-display"></p>
             <p>Wins: <span id="wins-display">0</span> | Losses: <span id="losses-display">0</span></p>
             <div id="avatar-selection">
-                <button class="avatar-btn" data-avatar="#">1</button>
-                <button class="avatar-btn" data-avatar="#">2</button>
-                <button class="avatar-btn" data-avatar="#">3</button>
+                <button class="avatar-btn" data-avatar="./avatars/avatar1.png">1</button>
+                <button class="avatar-btn" data-avatar="./avatars/avatar2.jpg">2</button>
+                <button class="avatar-btn" data-avatar="./avatars/avatar3.jpg">3</button>
             </div>
-
             <button id="back-to-main-from-character">&lArr; Back</button>
+        </section>
+
+        <section id="settings-screen">
+            <nav class="main-nav">
+                <button class="nav-btn" data-screen="main">&#127968; Home</button>
+                <button class="nav-btn" data-screen="character">&#128100; Character</button>
+                <button class="nav-btn active" data-screen="settings">&#9881;&#65039; Settings</button>
+            </nav>
+            <h2>Settings</h2>
+            <p class="settings-label">Player name:</p>
+            <p class="settings-current-name" id="settings-current-name-display"></p>
+            <p class="settings-label">Change your name:</p>
+            <input type="text" id="settings-name-input" placeholder="Enter new name...">
+            <button class="save-btn">Save</button>
+            <button class="back-btn">&lArr; Back</button>
         </section>
     </div>
     <script type="module" src="./app.js"></script>

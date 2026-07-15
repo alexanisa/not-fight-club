@@ -20,6 +20,10 @@ const saveSettingsBtn = document.querySelector('.save-btn');
 const backFromSettingsBtn = document.querySelector('.back-btn');
 const settingsCurrentNameDisplay = document.getElementById('settings-current-name-display');
 
+const backFromBattleBtn = document.getElementById('back-to-main-from-battle');
+
+import { startFight, loadBattleState } from "./fight.js";
+
 function showMainScreen() {
     showScreen('main-screen');
     playerNameDisplay.textContent = localStorage.getItem('playerName');
@@ -40,10 +44,6 @@ registrationBtn.addEventListener('click', () => {
     }
 });
 
-startFightBtn.addEventListener('click', () => {
-    console.log('New fight started!');
-});
-
 resetBtn.addEventListener('click', () => {
     if (confirm('Are you sure you want to delete all data?')) {
         localStorage.removeItem('playerName');
@@ -60,6 +60,12 @@ function showScreen(screenId) {
         section.style.display = 'none';
     });
     document.getElementById(screenId).style.display = 'block';
+    let app = document.getElementById('app');
+    if (screenId === 'battle-screen') {
+        app.classList.add('full-width');
+    } else {
+        app.classList.remove('full-width');
+    }
 }
 
 navButtons.forEach(btn => {
@@ -73,11 +79,20 @@ navButtons.forEach(btn => {
         } else if (screen === 'settings') {
             showScreen('settings-screen');
             updateSettingScreen();
+        } else if (screen === 'battle') {
+            showScreen('battle-screen');
         }
     });
 })
 
 function updateCharacterScreen() {
+    let name = localStorage.getItem('playerName') || 'Unknown';
+    let avatar = localStorage.getItem('playerAvatar') || './avatars/avatar1.png';
+
+    characterNameDisplay.textContent = name;
+    playerAvatar.src = avatar;
+    document.getElementById('battle-avatar').src = avatar;
+
     characterNameDisplay.textContent = localStorage.getItem('playerName') || 'Unknown';
     winsDisplay.textContent = localStorage.getItem('playerWins') || 0;
     lossesDisplay.textContent = localStorage.getItem('playerLosses') || 0;
@@ -99,6 +114,7 @@ avatarBtns.forEach(avatarBtn => {
 
         avatarBtns.forEach(btn => btn.classList.remove('active'));
         avatarBtn.classList.add('active');
+        document.getElementById('battle-avatar').src = avatarCh;
     })
 })
 
@@ -117,3 +133,29 @@ saveSettingsBtn.addEventListener('click', ()=> {
 backFromSettingsBtn.addEventListener('click', ()=> {
     showScreen('main-screen');
 })
+
+function hasSavedBattle() {
+    return localStorage.getItem('playerHealth') !== null;
+}
+
+startFightBtn.addEventListener('click', ()=> {
+    if (hasSavedBattle()) {
+        if (confirm('You have a battle in progress. Continue?')) {
+            loadBattleState();
+            showScreen('battle-screen');
+        } else {
+            localStorage.removeItem('playerHealth');
+            localStorage.removeItem('enemyHealth');
+            localStorage.removeItem('currentLevel');
+            startFight();
+            showScreen('battle-screen');
+        }
+    } else {
+        startFight();
+        showScreen('battle-screen');
+    }
+})
+
+backFromBattleBtn.addEventListener('click', () => {
+    showScreen('main-screen');
+});

@@ -42,7 +42,7 @@
             <div id="avatar-selection">
                 <button class="avatar-btn" data-avatar="./avatars/avatar1.png">1</button>
                 <button class="avatar-btn" data-avatar="./avatars/avatar2.jpg">2</button>
-                <button class="avatar-btn" data-avatar="./avatars/avatar3.jpg">3</button>
+                <button class="avatar-btn" data-avatar="./avatars/avatar3.png">3</button>
             </div>
             <button id="back-to-main-from-character">&lArr; Back</button>
         </section>
@@ -61,7 +61,57 @@
             <button class="save-btn">Save</button>
             <button class="back-btn">&lArr; Back</button>
         </section>
+
+        <section id="battle-screen">
+            <nav class="main-nav">
+                <button class="nav-btn" data-screen="main">&#127968; Home</button>
+                <button class="nav-btn" data-screen="character">&#128100; Character</button>
+                <button class="nav-btn active" data-screen="settings">&#9881;&#65039; Settings</button>
+            </nav>
+            <button id="back-to-main-from-battle">&lArr; Back</button>
+            <h2>&#x2694; Battle</h2>
+            <div id="battle-container">
+                <div id="enemy-battle">
+                    <img id="enemy-avatar" src="" alt="Enemy Avatar">
+                    <p id="battle-enemy-name"></p>
+                    <div class="health-bar">
+                        <div id="enemy-health"></div>
+                    </div>
+                    <span id="enemy-health-text">100 / 100</span>
+                </div>
+                <div id="player-battle">
+                    <img id="battle-avatar" src="./avatars/avatar1.png" alt="Player Avatar">
+                    <p id="battle-player-name"></p>
+                    <div class="health-bar">
+                        <div id="player-health"></div>
+                    </div>
+                    <span id="player-health-text">100 / 100</span>
+                </div>
+            </div>
+            <div id="zone-selection">
+                <div>
+                    <h3>Attack</h3>
+                    <button class="attack-zone" data-zone="head">Head</button>
+                    <button class="attack-zone" data-zone="body">Body</button>
+                    <button class="attack-zone" data-zone="legs">Legs</button>
+                </div>
+                <div>
+                    <h3>Defense</h3>
+                    <button class="defense-zone" data-zone="head">Head</button>
+                    <button class="defense-zone" data-zone="body">Body</button>
+                    <button class="defense-zone" data-zone="legs">Legs</button>
+                </div>
+            </div>
+
+            <button id="fight-btn">&#x2694; Fight!</button>
+
+            <div id="battle-log">
+                <h3>Battle Log</h3>
+                <div id="log-entries"></div>
+            </div>
+        </section>
     </div>
     <script type="module" src="./app.js"></script>
+    <script type="module" src="fight.js"></script>
 </body>
 </html>

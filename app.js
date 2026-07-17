@@ -40,6 +40,9 @@ registrationBtn.addEventListener('click', () => {
     const name = nameInput.value.trim();
     if (name) {
         localStorage.setItem('playerName', name);
+        localStorage.removeItem('playerHealth');
+        localStorage.removeItem('enemyHealth');
+        localStorage.removeItem('currentLevel');
         showMainScreen();
     } else {
         alert('Please enter your name');

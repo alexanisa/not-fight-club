@@ -25,6 +25,8 @@ const backFromBattleBtn = document.getElementById('back-to-main-from-battle');
 import { startFight, loadBattleState } from "./fight.js";
 
 function showMainScreen() {
+    document.getElementById('registration-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
     showScreen('main-screen');
     playerNameDisplay.textContent = localStorage.getItem('playerName');
 }
@@ -50,12 +52,13 @@ resetBtn.addEventListener('click', () => {
         localStorage.removeItem('playerAvatar');
         localStorage.removeItem('playerWins');
         localStorage.removeItem('playerLosses');
-
+        document.getElementById('app').style.display = 'none';
+        document.getElementById('registration-screen').style.display = 'block';
         location.reload();
     }
 });
 
-function showScreen(screenId) {
+export function showScreen(screenId) {
     document.querySelectorAll('#app > section').forEach(section => {
         section.style.display = 'none';
     });

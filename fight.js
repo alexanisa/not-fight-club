@@ -34,6 +34,7 @@ export const playerHealth = document.getElementById('player-health');
 export const playerHealthText = document.getElementById('player-health-text');
 
 export function startFight() {
+    resetZones();
     const enemy = enemies[currentLevel];
     battleEnemyName.textContent = enemy.name;
     enemyAvatar.src = enemy.avatar;
@@ -71,7 +72,7 @@ export function loadBattleState() {
     }
     return false;
 }
-
+import { showScreen } from "./app.js";
 let selectedAttack = null;
 let selectedDefense = [];
 
@@ -117,4 +118,101 @@ function checkFightReady() {
         hint.textContent = 'Ready to fight!';
         fightBtn.disabled = false;
     }
+}
+
+const allZones = ['head', 'body', 'legs'];
+
+function getRandomZones(count) {
+    let zones = ['head', 'body', 'legs'];
+    let result = [];
+    for (let i=0; i< count; i++) {
+        let index = Math.floor(Math.random() * zones.length);
+        result.push(zones[index]);
+        zones.splice(index,1);
+    }
+    return result;
+}
+
+function calculateDamage(baseDamage, isCritical, isProtected) {
+    if (isCritical) {
+        if(isProtected) {
+            return baseDamage*0.5;
+        } else {
+            return baseDamage*1.5;
+        }
+    } else {
+        if(isProtected) {
+            return 0;
+        } else {
+            return baseDamage;
+        }
+    }
+
+}
+
+const fightBtn = document.getElementById('fight-btn');
+
+fightBtn.addEventListener('click', ()=> {
+    const playerAttack = selectedAttack;
+    const playerDefense = selectedDefense;
+
+    resetZones();
+
+    if (!playerAttack || playerDefense.length !== 2) return;
+    let enemy = enemies[currentLevel];
+    let defense = getRandomZones(enemy.defenseZones);
+    let isCritical = Math.random() < 0.2;
+    let isProtected = defense.includes(playerAttack);
+    let playerDamage = calculateDamage(15, isCritical, isProtected);
+
+    let enemyCurrentHealth = parseInt(localStorage.getItem('enemyHealth'));
+
+    enemyCurrentHealth -= playerDamage;
+    if (enemyCurrentHealth < 0 ) enemyCurrentHealth = 0;
+
+    localStorage.setItem('enemyHealth', enemyCurrentHealth);
+    enemyHealth.style.width = (enemyCurrentHealth / enemy.health) * 100 + '%';
+    enemyHealthText.textContent = `${enemyCurrentHealth} / ${enemy.health}`;
+
+    let attack = getRandomZones(enemy.attackZones);
+    let playerCurrentHealth = parseInt(localStorage.getItem('playerHealth'));
+    attack.forEach(zone => {
+        let isProtected = playerDefense.includes(zone);
+        let damage = calculateDamage(enemy.damage, isCritical, isProtected);
+        playerCurrentHealth -= damage;
+        if (playerCurrentHealth < 0) playerCurrentHealth = 0;
+        localStorage.setItem('playerHealth', playerCurrentHealth);
+    });
+    playerHealth.style.width = (playerCurrentHealth / 100) * 100 + '%';
+    playerHealthText.textContent = `${playerCurrentHealth} / 100`;
+
+    if(enemyCurrentHealth <= 0) {
+        if (currentLevel < enemies.length - 1) {
+        if (confirm('You win! Next enemy?')) {
+            currentLevel++;
+            startFight();
+        } else {
+            showScreen('main-screen')
+        }
+    } else {
+        alert('You win the whole game!');
+    }
+    return;
+    }
+    if (playerCurrentHealth <= 0) {
+        if (confirm('You lose! Try again?')) {
+            startFight();
+        } else {
+        showScreen('main-screen')
+        }
+    return;
+    }
+})
+
+function resetZones() {
+    attackZones.forEach(btn => btn.classList.remove('selected'));
+    defenseZones.forEach(btn => btn.classList.remove('selected'));
+    selectedAttack = null;
+    selectedDefense = [];
+    checkFightReady();
 }

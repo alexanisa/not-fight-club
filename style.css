@@ -27,11 +27,24 @@ body {
     border-radius: 3rem;
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
     transition: max-width 0.3s ease;
+    display: none;
 }
 
 #app.full-width {
     max-width: 100%;
     padding: 0 2rem;
+}
+
+.registration-screen {
+    text-align: center;
+    max-width: 70rem;
+    width: 100%;
+    background: rgba(255, 248, 240, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 4rem 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
+    transition: max-width 0.3s ease;
 }
 
 .registration-screen__title {

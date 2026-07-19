@@ -22,7 +22,7 @@ const settingsCurrentNameDisplay = document.getElementById('settings-current-nam
 
 const backFromBattleBtn = document.getElementById('back-to-main-from-battle');
 
-import { startFight, loadBattleState } from "./fight.js";
+import { startFight, loadBattleState, getWins } from "./fight.js";
 
 function showMainScreen() {
     document.getElementById('registration-screen').style.display = 'none';
@@ -94,17 +94,24 @@ navButtons.forEach(btn => {
 function updateCharacterScreen() {
     let name = localStorage.getItem('playerName') || 'Unknown';
     let avatar = localStorage.getItem('playerAvatar') || './avatars/avatar1.png';
+    let wins = getWins();
 
     characterNameDisplay.textContent = name;
     playerAvatar.src = avatar;
     document.getElementById('battle-avatar').src = avatar;
 
-    characterNameDisplay.textContent = localStorage.getItem('playerName') || 'Unknown';
-    winsDisplay.textContent = localStorage.getItem('playerWins') || 0;
+    let totalWins = Object.values(wins).reduce((a, b) => a + b, 0);
+    winsDisplay.textContent = totalWins;
     lossesDisplay.textContent = localStorage.getItem('playerLosses') || 0;
-    let savedAvatar = localStorage.getItem('playerAvatar');
-    if (savedAvatar) {
-        playerAvatar.src = savedAvatar;
+
+    let winsList = document.getElementById('wins-list');
+    if (winsList) {
+        winsList.innerHTML = '';
+        for (let [enemy, count] of Object.entries(wins)) {
+            let li = document.createElement('li');
+            li.innerHTML = `${enemy}: <span class="win-count">${count}</span>`;
+            winsList.appendChild(li);
+        }
     }
 }
 

@@ -256,6 +256,11 @@ function showBattleResult(isWin) {
     const image = document.getElementById('result-image');
 
     if (isWin) {
+        let wins = getWins();
+        let enemyName = enemies[currentLevel].name;
+        wins[enemyName] = (wins[enemyName] || 0) + 1;
+        saveWins(wins);
+
         if (currentLevel < enemies.length - 1) {
             currentLevel++;
             startFight();
@@ -267,6 +272,9 @@ function showBattleResult(isWin) {
         title.className = 'win';
         image.src = './win.jpg';
     } else {
+        let losses = parseInt(localStorage.getItem('playerLosses')) || 0;
+        localStorage.setItem('playerLosses', losses + 1);
+
         resultDiv.style.display = 'block';
         title.textContent = '💀 You Lose!';
         title.className = 'lose';
@@ -276,9 +284,22 @@ function showBattleResult(isWin) {
     document.getElementById('result-btn').onclick = () => {
         resultDiv.style.display = 'none';
         if (isWin) {
+            localStorage.removeItem('playerHealth');
+            localStorage.removeItem('enemyHealth');
+            localStorage.removeItem('currentLevel');
+            currentLevel = 0;
             showScreen('main-screen');
         } else {
             startFight();
         }
     };
+}
+
+export function getWins() {
+    const data = localStorage.getItem('enemyWins');
+    return data ? JSON.parse(data) : {};
+}
+
+function saveWins(wins) {
+    localStorage.setItem('enemyWins', JSON.stringify(wins));
 }

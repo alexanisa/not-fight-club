@@ -721,3 +721,41 @@ body {
     background: #e0a84d;
     transform: scale(1.05);
 }
+
+#wins-stats {
+    background: rgba(255, 248, 240, 0.85);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 30rem;
+    text-align: center;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+#wins-stats h3 {
+    font-size: 2rem;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+#wins-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#wins-list li {
+    font-size: 1.6rem;
+    color: #4A0D14;
+    padding: 0.3rem 0;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
+}
+
+#wins-list li:last-child {
+    border-bottom: none;
+}
+
+#wins-list .win-count {
+    font-weight: 700;
+    color: #4CAF50;
+}

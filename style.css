@@ -1,0 +1,761 @@
+html {
+    font-size: 62.5%;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #deffdb,#fff6e0,#ffe0e5,#ff9985,#b270a1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+#app {
+    text-align: center;
+    max-width: 70rem;
+    width: 100%;
+    background: rgba(255, 248, 240, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 4rem 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
+    transition: max-width 0.3s ease;
+    display: none;
+}
+
+#app.full-width {
+    max-width: 100%;
+    padding: 0 2rem;
+}
+
+.registration-screen {
+    text-align: center;
+    max-width: 70rem;
+    width: 100%;
+    background: rgba(255, 248, 240, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 4rem 3rem;
+    border-radius: 3rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.15);
+    transition: max-width 0.3s ease;
+}
+
+.registration-screen__title {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #F8C26D;
+    text-shadow: 0 0 2rem rgba(248, 194, 109, 0.6), 0 0 4rem rgba(248, 194, 109, 0.3);
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.registration-screen__subtitle {
+    font-size: 2.2rem;
+    color: #5A4A5A;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+}
+
+#player-name-input {
+    width: 100%;
+    padding: 1.4rem 2rem;
+    font-size: 2.4rem;
+    border: 0.2rem solid #961D2C;
+    border-radius: 1.2rem;
+    background: #FFF8F0;
+    color: #4A0D14;
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#player-name-input::placeholder {
+    color: #B09B9B;
+    font-weight: 300;
+    font-size: 1.8rem;
+}
+
+#player-name-input:focus {
+    border-color: #F8C26D;
+    box-shadow: 0 0 2rem rgba(248, 194, 109, 0.3);
+}
+
+#register-button {
+    margin-top: 2rem;
+    padding: 1.4rem 3.5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: #F8C26D;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 109, 0.4);
+    letter-spacing: 0.1rem;
+}
+
+#register-button:hover {
+    background: #961D2C;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2.5rem rgba(150, 29, 44, 0.4);
+}
+
+#register-button:active {
+    transform: scale(0.96);
+}
+
+#main-screen {
+    display: none;
+    text-align: center;
+}
+
+#main-screen h2 {
+    font-size: 3.6rem;
+    color: #4A0D14;
+    margin-bottom: 2rem;
+}
+
+#main-screen h2 span {
+    color: #F8C26D;
+    text-shadow: 0 0 1.5rem rgba(248, 194, 109, 0.4);
+}
+
+#start-fight-btn {
+    padding: 1.4rem 4rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: #F8C26D;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.5rem rgba(248, 194, 109, 0.4);
+}
+
+#start-fight-btn:hover {
+    background: #961D2C;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2.5rem rgba(150, 29, 44, 0.4);
+}
+
+#start-fight-btn:active {
+    transform: scale(0.96);
+}
+
+#reset-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.4rem;
+    background: transparent;
+    color: #961D2C;
+    border: 0.2rem solid #961D2C;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#reset-btn:hover {
+    background: #961D2C;
+    color: white;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.2rem solid rgba(150, 29, 44, 0.2);
+}
+
+.nav-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.6rem;
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid transparent;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-btn:hover {
+    background: rgba(248, 194, 109, 0.2);
+    border-color: #F8C26D;
+}
+
+.nav-btn.active {
+    background: #F8C26D;
+    color: white;
+    border-color: #F8C26D;
+}
+
+#character-screen {
+    display: none;
+    text-align: center;
+}
+
+#avatar-container {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto 1.5rem;
+    border-radius: 25%;
+    overflow: hidden;
+    border: 0.3rem solid #F8C26D;
+    box-shadow: 0 0 2rem rgba(248, 194, 109, 0.3);
+}
+
+#player-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#character-name-display {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+#character-screen p {
+    font-size: 1.6rem;
+    color: #5A4A5A;
+    margin-bottom: 1rem;
+}
+
+#avatar-selection {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.avatar-btn {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 0.2rem solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+    font-size: 1.4rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-btn:hover {
+    transform: scale(1.1);
+    border-color: #F8C26D;
+}
+
+.avatar-btn.active {
+    border-color: #961D2C;
+    box-shadow: 0 0 1.5rem rgba(150, 29, 44, 0.3);
+}
+
+#back-to-main-from-character {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid #4A0D14;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.6rem;
+}
+
+#back-to-main-from-character:hover {
+    background: #4A0D14;
+    color: white;
+}
+
+#settings-screen {
+    text-align: center;
+}
+
+#settings-screen h2 {
+    font-size: 3.6rem;
+    color: #4A0D14;
+    margin-bottom: 2rem;
+}
+
+#settings-name-input {
+    width: 80%;
+    max-width: 30rem;
+    padding: 1.2rem 1.8rem;
+    font-size: 2rem;
+    border: 0.2rem solid #F8C26D;
+    border-radius: 0.8rem;
+    background: #FFF8F0;
+    color: #4A0D14;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+#settings-name-input:focus {
+    border-color: #961D2C;
+    box-shadow: 0 0 1.5rem rgba(248, 194, 109, 0.3);
+}
+
+#settings-screen button {
+    padding: 1rem 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+}
+
+#settings-screen .save-btn {
+    background: #F8C26D;
+    color: white;
+}
+
+#settings-screen .save-btn:hover {
+    background: #e0a84d;
+    transform: translateY(-0.2rem);
+}
+
+#settings-screen .back-btn {
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid #4A0D14;
+}
+
+#settings-screen .back-btn:hover {
+    background: #4A0D14;
+    color: white;
+}
+
+.settings-label {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+.settings-current-name {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #961D2C;
+    background: rgba(248, 194, 109, 0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+#settings-current-name-display {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #961D2C;
+    background: rgba(248, 194, 109, 0.25);
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    display: inline-block;
+    margin: 0.5rem 0 1.5rem 0;
+    border: 0.2rem solid #F8C26D;
+    box-shadow: 0 0.2rem 1rem rgba(248, 194, 109, 0.3);
+}
+
+#battle-screen {
+    display: none;
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 80vh;
+}
+
+#battle-screen h2 {
+    font-size: 3.6rem;
+    color: #4A0D14;
+    margin-bottom: 2rem;
+}
+
+#battle-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-bottom: 2rem;
+    max-height: 90vh;
+}
+
+#player-battle,
+#enemy-battle {
+    background: rgba(255, 248, 240, 0.85);
+    border-radius: 2rem;
+    padding: 3rem;
+    min-width: 20rem;
+    flex: 1;
+    max-width: 45rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+#player-battle img,
+#enemy-battle img {
+    width: 35rem;
+    height: auto;
+    border-radius: 0;
+    border: none;
+    object-fit: cover;
+}
+
+#player-battle p,
+#enemy-battle p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4A0D14;
+    margin: 0.5rem 0;
+}
+
+.health-bar {
+    width: 100%;
+    height: 2rem;
+    background: #e0e0e0;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+#player-health,
+#enemy-health {
+    height: 100%;
+    border-radius: 1rem;
+    transition: width 0.3s ease;
+}
+
+#player-health {
+    background: #4CAF50;
+}
+
+#enemy-health {
+    background: #e94560;
+}
+
+#player-health-text,
+#enemy-health-text {
+    font-size: 1.4rem;
+    color: #5A4A5A;
+}
+
+#zone-selection {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+#zone-selection h3 {
+    font-size: 2rem;
+    color: #4A0D14;
+    margin-bottom: 1rem;
+}
+
+#zone-selection button {
+    padding: 1.2rem 3rem;
+    font-size: 2rem;
+    font-weight: 600;
+    border: 0.2rem solid #ddd;
+    border-radius: 0.8rem;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0.3rem;
+}
+
+#zone-selection button:hover {
+    border-color: #F8C26D;
+}
+
+#zone-selection button.selected {
+    border-color: #961D2C;
+    background: #F8C26D;
+    color: white;
+}
+
+#fight-btn {
+    padding: 1.8rem 5rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.4rem 1.5rem rgba(233, 69, 96, 0.4);
+}
+
+#fight-btn:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 1rem 2.5rem rgba(233, 69, 96, 0.4);
+}
+
+#fight-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#back-to-main-from-battle {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    color: #4A0D14;
+    border: 0.2rem solid #4A0D14;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+#back-to-main-from-battle:hover {
+    background: #4A0D14;
+    color: white;
+}
+
+#battle-log {
+    margin-top: 2rem;
+    background: rgba(255, 248, 240, 0.85);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    max-height: 30rem;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#battle-log h3 {
+    font-size: 2.8rem;
+    color: #4A0D14;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#log-entries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    max-height: 19rem;
+    overflow-y: auto;
+    padding: 0.5rem;
+    background: rgba(255, 248, 240, 0.6);
+    border-radius: 1rem;
+}
+
+.log-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 0.4rem solid #ccc;
+}
+
+.log-entry .log-left {
+    font-weight: 600;
+}
+
+.log-entry .log-right {
+    font-weight: 400;
+    color: #5A4A5A;
+}
+
+.log-entry.player-attack {
+    border-left-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.08);
+}
+
+.log-entry.enemy-attack {
+    border-left-color: #e94560;
+    background: rgba(233, 69, 96, 0.08);
+}
+
+.log-entry.block {
+    border-left-color: #F8C26D;
+    background: rgba(248, 194, 109, 0.08);
+}
+
+.log-entry.critical {
+    border-left-color: #961D2C;
+    background: rgba(150, 29, 44, 0.08);
+    font-weight: 600;
+}
+
+.log-entry .attacker {
+    font-weight: 700;
+    color: #e94560;
+}
+
+.log-entry .defender {
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.log-entry .zone {
+    font-weight: 700;
+    color: #F8C26D;
+}
+
+.log-entry .damage {
+    font-weight: 700;
+    color: #961D2C;
+}
+
+#battle-hint {
+    color: #5A4A5A;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+}
+
+#super-attack-btn {
+    display: none;
+    margin: 1rem auto;
+    padding: 1.2rem 3rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1A1A2E;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.5rem rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+#super-attack-btn:hover {
+    transform: translateY(-0.3rem) scale(1.02);
+    box-shadow: 0 0.8rem 2.5rem rgba(255, 215, 0, 0.7);
+}
+
+#super-attack-btn:active {
+    transform: scale(0.95);
+}
+
+#super-attack-btn::before {
+    content: '⚡ ';
+}
+
+#super-attack-btn::after {
+    content: '⚡ ';
+}
+
+.log-entry.super {
+    border-left-color: #FFD700;
+    background: rgba(255, 215, 0, 0.15);
+    font-weight: 700;
+}
+
+#battle-result {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    text-align: center;
+    padding: 2rem;
+}
+
+#battle-result h2 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+
+#battle-result .win {
+    color: #4CAF50;
+}
+
+#battle-result .lose {
+    color: #e94560;
+}
+
+#result-image {
+    height: 80vh;
+    max-width: 80%;
+    border-radius: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#result-btn {
+    padding: 1.2rem 3.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: #F8C26D;
+    border: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+#result-btn:hover {
+    background: #e0a84d;
+    transform: scale(1.05);
+}
+
+#wins-stats {
+    background: rgba(255, 248, 240, 0.85);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 30rem;
+    text-align: center;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+}
+
+#wins-stats h3 {
+    font-size: 2rem;
+    color: #4A0D14;
+    margin-bottom: 0.5rem;
+}
+
+#wins-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#wins-list li {
+    font-size: 1.6rem;
+    color: #4A0D14;
+    padding: 0.3rem 0;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
+}
+
+#wins-list li:last-child {
+    border-bottom: none;
+}
+
+#wins-list .win-count {
+    font-weight: 700;
+    color: #4CAF50;
+}
